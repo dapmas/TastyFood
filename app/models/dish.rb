@@ -1,2 +1,3 @@
-class Dish < ApplicationRecord
+class Dish < ActiveRecord::Base
+  belongs_to :resturant
 end
