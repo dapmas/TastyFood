@@ -7,7 +7,8 @@ class DishesController < ApplicationController
 	end
 
 	def show
-	  #@posts = Post.find(params[:id])
+    @dishes = Dish.find(params[:id])	  
+    #@posts = Post.find(params[:id])
 		#@user = AdminUser.all
 		#@disable_sidebar = true
 		#@disable_footer = true
@@ -54,7 +55,8 @@ class DishesController < ApplicationController
 
 	private
 
-	def post_params
+	def dish_params
+    params.require(:dish).permit(:title, :body, :resturant_id, :author_id)
 	 # params.require(:post).permit(:title, :body, :category_id, :admin_user_id)
 	end
 
