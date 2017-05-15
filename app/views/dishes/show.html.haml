@@ -1,5 +1,9 @@
 %h1
   = @dishes.title
 
+%small
+  = @dishes.created_at.strftime("%b %d, %Y")
+
+
 %p
   = @dishes.body
