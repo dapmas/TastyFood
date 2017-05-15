@@ -2,5 +2,5 @@
 
 - @resturants.each do |resturant|
   %h2
-    = resturant.name
+    = link_to resturant.name, resturant_path(:id => resturant.id)
 

@@ -2,6 +2,6 @@
 
 - @dishes.each do |dish|
   %h2
-    = dish.title
+    = link_to dish.title, dish
   %p
     = dish.body
