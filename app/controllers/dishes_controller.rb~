@@ -1,7 +1,6 @@
 class DishesController < ApplicationController
 
 	def index
-    @dishes = Dish.all
 		#@search = Post.search(params[:q])
 	  #@posts = @search.result
 	end
