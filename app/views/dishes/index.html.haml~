@@ -1,7 +1,0 @@
-%h1 All Dishes
-
-- @dishes.each do |dish|
-  %h2
-    = link_to dish.title, dish
-  %p
-    = dish.body

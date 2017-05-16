@@ -1,6 +1,9 @@
 %h1 List of all the ingredients
 
 - @ingredients.each do |ingredient|
-  = ingredient.name
+  %ul  
+    %li
+      = link_to ingredient.name, ingredient
 
-= link_to "Back to Homepage", home_index_path 
+%h5
+  = link_to "Back to Homepage", home_index_path 

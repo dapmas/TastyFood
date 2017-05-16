@@ -1,7 +1,9 @@
-%h1 All Resturants
+%h2 All Resturants
 
 - @resturants.each do |resturant|
-  %h2
+  %h4
     = link_to resturant.name, resturant_path(:id => resturant.id)
 
-= link_to "Back to Homepage", home_index_path 
+
+%h5
+  = link_to "Back to Homepage", home_index_path 

@@ -8,7 +8,8 @@ class DishesController < ApplicationController
 
 	def show
     @dishes = Dish.find(params[:id])
-		@resturants = Resturant.all	  
+		@resturants = Resturant.all
+		@ingredients = Ingredient.all	  
     #@posts = Post.find(params[:id])
 		#@user = AdminUser.all
 		#@disable_sidebar = true

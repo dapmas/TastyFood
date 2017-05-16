@@ -1,6 +1,0 @@
-%h1 All Resturants
-
-- @resturants.each do |resturant|
-  %h2
-    = link_to resturant.name, resturant_path(:id => resturant.id)
-
