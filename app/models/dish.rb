@@ -1,4 +1,5 @@
 class Dish < ActiveRecord::Base
-  belongs_to :resturant
+  has_many :menus
+  has_many :resturants, :through => :menus
   has_many :ingredients
 end
