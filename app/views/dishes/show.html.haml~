@@ -9,10 +9,7 @@
   = @dishes.body
 
 
-%h4 This dish is served in these resturants :
 
-- @dishes.resturant_ids.each do |resturant_id|
-  
 
 %h3
   = link_to "Return to the list of all dishes.", dishes_path
