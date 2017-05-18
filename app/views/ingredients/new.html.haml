@@ -1,0 +1,12 @@
+%h3 Add new Ingredient
+
+= form_for @ingredient do |f|
+  %p
+    = f.label :name
+    = f.text_field :name
+
+  %p
+    = f.submit "Add Ingredient"
+
+%h5
+  = link_to "Go Back", ingredients_path

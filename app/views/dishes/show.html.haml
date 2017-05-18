@@ -27,11 +27,13 @@
           = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
 
 %h5
-  %t
-    = link_to "Return to all dish.", dishes_path
-  %t
-    = link_to "Edit this Dish", edit_dish_path
-  %t |
-  %t
-    /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
-    = link_to 'Destroy', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+  = link_to "Return to all Dishes.", dishes_path
+  &nbsp;
+  |
+  &nbsp;
+  = link_to "Edit this Dish", edit_dish_path
+  &nbsp;
+  |
+  &nbsp;
+  /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
+  = link_to 'Delete this Ingredient', @dish, :method => :delete, data: { confirm: 'Are you sure?' }

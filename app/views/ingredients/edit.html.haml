@@ -1,0 +1,12 @@
+ %h3 Edit Ingredient
+
+ = form_for @ingredient do |f|
+   %p
+     = f.label :name
+     = f.text_field :name
+
+   %p
+     = f.submit "Update Ingredient"
+
+ %h5
+   = link_to "Go Back", ingredient_path

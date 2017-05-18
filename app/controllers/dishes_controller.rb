@@ -18,7 +18,7 @@ class DishesController < ApplicationController
 	def create
 		@dish = Dish.new(dish_params)
 		if @dish.save
-			redirect_to dishes_path, :notice => "This dish has added to our records."
+			redirect_to dishes_path, :notice => "This dish has been added to our records."
 		else
 			render "new"
 		end
@@ -26,7 +26,6 @@ class DishesController < ApplicationController
 
 	def edit
 		@dish = Dish.find(params[:id])
-		@ingredients = @dish.ingredients
 	end
 
 	def update

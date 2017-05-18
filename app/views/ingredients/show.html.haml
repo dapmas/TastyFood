@@ -1,17 +1,32 @@
 %h3
-  These are the dishes made with
   = @ingredients.name
-  \:
-  %ul
-    - @ingredients.dish_ids.each do |dish_id|
-      %li
-        = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
+%h4
+  /These are the dishes made with
+  &nbsp;
+  &nbsp;
+  Description of the Ingredient.
 
-  %p These are the resturants where this ingredient is available :
-  %ul
-    - @resturants.each do |resturant|
-      %li
-        = link_to resturant.name, resturant
+  /\:
+  /
+    %ul
+      - @ingredients.dish_ids.each do |dish_id|
+        %li
+          = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
+
+    %p These are the resturants where this ingredient is available :
+    %ul
+      - @resturants.each do |resturant|
+        %li
+          = link_to resturant.name, resturant
 
 %h5
-  = link_to "Back to all Ingredients.", ingredients_path
+  = link_to "Return to all Ingredients.", ingredients_path
+  &nbsp;
+  |
+  &nbsp;
+  = link_to "Edit this Ingredient", edit_ingredient_path
+  &nbsp;
+  |
+  &nbsp;
+  /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
+  = link_to 'Delete this Ingredient', @ingredient, :method => :delete, data: { confirm: 'Are you sure?' }
