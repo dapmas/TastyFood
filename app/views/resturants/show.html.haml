@@ -3,15 +3,24 @@
 
 %h4 This resturant has the following Ingredients :
 
-- if @ingredients.present?
-  - @ingredients.each do |ingredient|
-
-    %h4
-      = link_to ingredient.name, ingredient
+- if @resturant.ingredient_ids.present?
+  - @resturant.ingredient_ids.each do |ingredient_id|
+    %ul
+      %h4
+        %li
+          =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
 
 - else
   %p Sorry! There are no ingredients available for this resturant right now.
 
 
-%h4
-  = link_to "Back to all the resturants.", resturants_path
+%h5
+  = link_to "Return to all Resturants.", resturants_path
+  &nbsp;
+  |
+  &nbsp;
+  = link_to "Edit this Resturant", edit_resturant_path
+  &nbsp;
+  |
+  &nbsp;
+  = link_to 'Delete this Resturant', @resturant, :method => :delete, data: { confirm: 'Are you sure?' }

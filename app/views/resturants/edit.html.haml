@@ -1,0 +1,17 @@
+%h3 Edit Resturant
+
+= form_for @resturant do |f|
+  %p
+    = f.label :name
+    = f.text_field :name
+
+  %p
+    /= f.collection_check_boxes :ingredient_ids, Ingredient.all.collect {|x| [x.name, x.id]}, {}, :multiple => true
+    = f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |b|
+      = b.check_box
+      = b.label
+  %p
+    = f.submit "Update Resturant"
+
+%h5
+  = link_to "Go Back", resturant_path
