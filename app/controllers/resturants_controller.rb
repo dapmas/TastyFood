@@ -6,7 +6,7 @@ class ResturantsController < ApplicationController
   def show
     @resturant = Resturant.find(params[:id])
     @title = @resturant.name
-    @dishes = @resturant.dishes
+    @ingredients = @resturant.ingredients
     #@disable_pagination = true
   end
 end

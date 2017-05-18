@@ -1,14 +1,16 @@
 %h3
-  These are the dishes made with 
+  These are the dishes made with
   = @ingredients.name
   \:
   %ul
     - @ingredients.dish_ids.each do |dish_id|
       %li
         = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
-  and these are the resturants that serve this dish :
+  %p These are the resturants where this ingredient is available :
   %ul
-    - @ingredients.dish_ids.each do |dish_id|
-      - @dishes.find(dish_id).resturant_ids.each do |resturant_id|
-        %li
-          = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
+    - @resturants.each do |resturant|
+      %li
+        = link_to resturant.name, resturant
+
+%h5
+  = link_to "Back to all Ingredients.", ingredients_path
