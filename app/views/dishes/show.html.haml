@@ -1,16 +1,16 @@
 %h1
-  = @dishes.title
+  = @dish.title
 
 %small
-  = @dishes.created_at.strftime("%b %d, %Y")
+  = @dish.created_at.strftime("%b %d, %Y")
 
 
 %p
-  = @dishes.body
+  = @dish.body
 
 %h4 Ingredients :
 
-- @dishes.ingredient_ids.each do |ingredient_id|
+- @dish.ingredient_ids.each do |ingredient_id|
   %ul
     %h4
       %li
@@ -19,16 +19,19 @@
 /
   %h4 This dish is served in these resturants :
 
-  - @dishes.resturant_ids.each do |resturant_id|
+  - @dish.resturant_ids.each do |resturant_id|
 
     %ul
       %h4
         %li
           = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
 
-
 %h5
   %t
-    = link_to "Return to all dishes.", dishes_path
+    = link_to "Return to all dish.", dishes_path
   %t
     = link_to "Edit this Dish", edit_dish_path
+  %t |
+  %t
+    /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
+    = link_to 'Destroy', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
