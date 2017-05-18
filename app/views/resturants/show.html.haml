@@ -1,16 +1,16 @@
 %h3
   = @resturant.name
 
-%h4 Dishes available in this resturant :  
+%h4 This resturant has the following Ingredients :
 
-- if @dishes.present?
-  - @dishes.each do |dish|
-     
+- if @ingredients.present?
+  - @ingredients.each do |ingredient|
+
     %h4
-      = link_to dish.title, dish
+      = link_to ingredient.name, ingredient
 
 - else
-  %p Sorry! There are no dishes available for this resturant right now.
+  %p Sorry! There are no ingredients available for this resturant right now.
 
 
 %h4

@@ -6,8 +6,6 @@
     - @ingredients.dish_ids.each do |dish_id|
       %li
         = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
-<<<<<<< HEAD
-=======
   %p These are the resturants where this ingredient is available :
   %ul
     - @resturants.each do |resturant|
@@ -16,4 +14,3 @@
 
 %h5
   = link_to "Back to all Ingredients.", ingredients_path
->>>>>>> feature/user-authentication

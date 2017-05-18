@@ -7,6 +7,17 @@
       %li
         = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
 <<<<<<< HEAD
+
+  and these are the resturants that serve this dish :
+
+  %ul
+    - @ingredients.dish_ids.each do |dish_id|
+      - @dishes.find(dish_id).resturant_ids.each do |resturant_id|
+        %li
+          = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
+
+%h5
+  = link_to "Return to all Ingredients.", ingredients_path
 =======
   %p These are the resturants where this ingredient is available :
   %ul
