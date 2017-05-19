@@ -24,26 +24,24 @@
       %li
         =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
 
-/
-  %h4 This dish is served in these resturants :
-
-  - @dish.resturant_ids.each do |resturant_id|
-
-    %ul
-      %h4
-        %li
-          = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
 
 %h5
   = link_to "Return to all Dishes.", dishes_path
 
   - if @dish.user == current_user
+    / It is assumed that a user has only one role out of admin, resturant_owner and normal user.
+    - if current_user.has_role? :resturant_owner
+      &nbsp;
+      |
+      &nbsp;
+      = link_to "Edit this Dish", edit_dish_path
+      &nbsp;
+      |
+      &nbsp;
+      = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+
+  - if current_user.has_role? :admin
     &nbsp;
     |
     &nbsp;
-    = link_to "Edit this Dish", edit_dish_path
-    &nbsp;
-    |
-    &nbsp;
-    /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
     = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
