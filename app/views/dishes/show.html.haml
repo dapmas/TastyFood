@@ -36,12 +36,14 @@
 
 %h5
   = link_to "Return to all Dishes.", dishes_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Edit this Dish", edit_dish_path
-  &nbsp;
-  |
-  &nbsp;
-  /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
-  = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+
+  - if @dish.user == current_user
+    &nbsp;
+    |
+    &nbsp;
+    = link_to "Edit this Dish", edit_dish_path
+    &nbsp;
+    |
+    &nbsp;
+    /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
+    = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
