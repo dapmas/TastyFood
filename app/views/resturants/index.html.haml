@@ -6,8 +6,9 @@
 
 
 %h4
-  = link_to "Add new Resturant", new_resturant_path
-  &nbsp;
-  |
-  &nbsp;
+  - if current_user.has_role? :admin
+    = link_to "Add new Resturant", new_resturant_path
+    &nbsp;
+    |
+    &nbsp;
   = link_to "Back to Homepage", home_index_path

@@ -16,11 +16,14 @@
 
 %h5
   = link_to "Return to all Resturants.", resturants_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Edit this Resturant", edit_resturant_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to 'Delete this Resturant', @resturant, :method => :delete, data: { confirm: 'Are you sure?' }
+    
+  - if current_user.has_role? :admin
+    &nbsp;
+    |
+    &nbsp;
+    = link_to "Edit this Resturant", edit_resturant_path
+
+    &nbsp;
+    |
+    &nbsp;
+    = link_to 'Delete this Resturant', @resturant, :method => :delete, data: { confirm: 'Are you sure?' }

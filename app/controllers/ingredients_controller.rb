@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :authenticate_user!, ecxept:[:index, :show]
   def index
     @ingredients = Ingredient.all
   end

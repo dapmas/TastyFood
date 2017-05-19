@@ -1,4 +1,5 @@
 class ResturantsController < ApplicationController
+  before_action :authenticate_user!, ecxept:[:index, :show]
   def index
     @resturants = Resturant.all
   end
@@ -44,6 +45,6 @@ class ResturantsController < ApplicationController
 	private
 
 	def resturant_params
-    params.require(:resturant).permit(:name, ingredient_ids: [])
+    params.require(:resturant).permit(:name, :user, ingredient_ids: [])
 	end
 end
