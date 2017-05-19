@@ -6,8 +6,9 @@
       = link_to ingredient.name, ingredient
 
 %h4
-  = link_to "Add new Ingredient", new_ingredient_path
-  &nbsp;
-  |
-  &nbsp;
+  - if current_user.has_role? :admin
+    = link_to "Add new Ingredient", new_ingredient_path
+    &nbsp;
+    |
+    &nbsp;
   = link_to "Back to Homepage", home_index_path
