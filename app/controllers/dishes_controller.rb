@@ -12,11 +12,13 @@ class DishesController < ApplicationController
 	end
 
 	def new
-		@dish = Dish.new
+		#@dish = Dish.new
+		@dish = current_user.dishes.build
 	end
 
 	def create
-		@dish = Dish.new(dish_params)
+		#@dish = Dish.new(dish_params)
+		@dish = current_user.dishes.build(dish_params)
 		if @dish.save
 			redirect_to dishes_path, :notice => "This dish has been added to our records."
 		else
@@ -46,7 +48,7 @@ class DishesController < ApplicationController
 	private
 
 	def dish_params
-    params.require(:dish).permit(:title, :body, ingredient_ids: [])
+    params.require(:dish).permit(:title, :body, :user, ingredient_ids: [])
 	end
 
 end

@@ -4,6 +4,14 @@
 %small
   = @dish.created_at.strftime("%b %d, %Y")
 
+&nbsp;
+|
+&nbsp;
+
+%small
+  By:
+  = @dish.user.email
+
 
 %p
   = @dish.body
