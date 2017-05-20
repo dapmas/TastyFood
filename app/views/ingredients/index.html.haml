@@ -4,10 +4,13 @@
   %ul
     %li
       = link_to ingredient.name, ingredient
-
 %h4
-  = link_to "Add new Ingredient", new_ingredient_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Back to Homepage", home_index_path
+  - if admin_signed_in?
+    - if current_admin.has_role? :super_admin
+      = link_to "Add new Ingredient", new_ingredient_path
+      &nbsp;
+      |
+      &nbsp;
+    = link_to "Back to Homepage", home_index_path
+  - else
+    = link_to "Back to Homepage", home_index_path

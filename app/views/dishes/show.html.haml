@@ -21,16 +21,6 @@
       %li
         =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
 
-/
-  %h4 This dish is served in these resturants :
-
-  - @dish.resturant_ids.each do |resturant_id|
-
-    %ul
-      %h4
-        %li
-          = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
-
 %h5
   - if admin_signed_in?
     = link_to "Return to all Dishes.", dishes_path

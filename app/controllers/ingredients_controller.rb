@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :authenticate_admin!, :except => [:index, :show]
   def index
     @ingredients = Ingredient.all
   end
@@ -10,11 +11,11 @@ class IngredientsController < ApplicationController
   end
 
   def new
-		@ingredient = Ingredient.new
+		@ingredient = current_admin.ingredients.build
 	end
 
 	def create
-		@ingredient = Ingredient.new(ingredient_params)
+		@ingredient = current_admin.ingredients.build(ingredient_params)
 		if @ingredient.save
 			redirect_to ingredients_path, :notice => "This ingredient has been added to our records."
 		else

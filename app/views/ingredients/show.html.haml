@@ -6,27 +6,18 @@
   &nbsp;
   Description of the Ingredient.
 
-  /\:
-  /
-    %ul
-      - @ingredients.dish_ids.each do |dish_id|
-        %li
-          = link_to @dishes.find(dish_id).title, @dishes.find(dish_id)
+%h4
+  - if admin_signed_in?
+    = link_to "Return to all Ingredients.", ingredients_path
+    - if current_admin.has_role? :super_admin
+      &nbsp;
+      |
+      &nbsp;
+      = link_to "Edit this Ingredient", edit_ingredient_path
+      &nbsp;
+      |
+      &nbsp;
+      = link_to 'Delete this Ingredient', @ingredient, :method => :delete, data: { confirm: 'Are you sure?' }
 
-    %p These are the resturants where this ingredient is available :
-    %ul
-      - @resturants.each do |resturant|
-        %li
-          = link_to resturant.name, resturant
-
-%h5
-  = link_to "Return to all Ingredients.", ingredients_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Edit this Ingredient", edit_ingredient_path
-  &nbsp;
-  |
-  &nbsp;
-  /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
-  = link_to 'Delete this Ingredient', @ingredient, :method => :delete, data: { confirm: 'Are you sure?' }
+  - else
+    = link_to "Return to all Ingredients.", ingredients_path
