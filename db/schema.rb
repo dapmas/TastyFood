@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20170520105218) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "email"
-    t.integer  "super_admin_id"
+    t.integer  "admin_id"
   end
 
   create_table "roles", force: :cascade do |t|
