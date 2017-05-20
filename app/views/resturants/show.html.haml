@@ -14,13 +14,23 @@
   %p Sorry! There are no ingredients available for this resturant right now.
 
 
-%h5
-  = link_to "Return to all Resturants.", resturants_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Edit this Resturant", edit_resturant_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to 'Delete this Resturant', @resturant, :method => :delete, data: { confirm: 'Are you sure?' }
+%h4
+  - if admin_signed_in?
+    = link_to "Return to all Resturants.", resturants_path
+    - if @resturant.email == current_admin.email
+
+      &nbsp;
+      |
+      &nbsp;
+      = link_to "Edit this Resturant", edit_resturant_path
+    - if current_admin.has_role? :super_admin
+      &nbsp;
+      |
+      &nbsp;
+      = link_to "Edit this Resturant", edit_resturant_path
+      &nbsp;
+      |
+      &nbsp;
+      = link_to 'Delete this Resturant', @resturant, :method => :delete, data: { confirm: 'Are you sure?' }
+  - else
+    = link_to "Return to all Resturants.", resturants_path

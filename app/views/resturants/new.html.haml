@@ -5,12 +5,16 @@
     = f.label :name
     = f.text_field :name
 
-
   %p
-    /= f.collection_check_boxes :ingredient_ids, Ingredient.all.collect {|x| [x.name, x.id]}, {}, :multiple => true
-    = f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |b|
-      = b.check_box
-      = b.label
+    = f.label :email
+    = f.email_field :email, autofocus: true
+
+  /
+    %p
+
+      = f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |b|
+        = b.check_box
+        = b.label
   %p
     = f.submit "Add Resturant"
 

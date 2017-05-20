@@ -1,4 +1,5 @@
 class ResturantsController < ApplicationController
+  before_action :authenticate_admin!, :except => [:index, :show]
   def index
     @resturants = Resturant.all
   end
@@ -10,11 +11,11 @@ class ResturantsController < ApplicationController
   end
 
   def new
-		@resturant = Resturant.new
+		@resturant = current_admin.resturants.build
 	end
 
 	def create
-		@resturant = Resturant.new(resturant_params)
+		@resturant = current_admin.resturants.build(resturant_params)
 		if @resturant.save
 			redirect_to resturants_path, :notice => "This resturant has been added to our records."
 		else
@@ -44,6 +45,6 @@ class ResturantsController < ApplicationController
 	private
 
 	def resturant_params
-    params.require(:resturant).permit(:name, ingredient_ids: [])
+    params.require(:resturant).permit(:name, :email, ingredient_ids: [])
 	end
 end

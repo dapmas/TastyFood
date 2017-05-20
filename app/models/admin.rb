@@ -6,4 +6,10 @@ class Admin < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :dishes
   has_many :ingredients
+  has_many :resturants
+  after_create :assign_default_role
+
+  def assign_default_role
+    add_role(:resturant_owner)
+  end
 end
