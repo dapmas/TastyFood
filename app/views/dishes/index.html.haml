@@ -8,8 +8,12 @@
 
 
 %h4
-  = link_to "Add new Dish", new_dish_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Back to Homepage", home_index_path
+  - if admin_signed_in?
+    - if current_admin.has_role? :resturant_owner
+      = link_to "Add new Dish", new_dish_path
+      &nbsp;
+      |
+      &nbsp;
+    = link_to "Back to Homepage", home_index_path
+  - else
+    = link_to "Back to Homepage", home_index_path

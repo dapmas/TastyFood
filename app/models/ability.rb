@@ -28,5 +28,18 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+    if admin.has_role? :super_admin
+      can :manage, :all
+    elsif admin.has_role? :resturant_owner
+      can :read, Resturant
+      can :read, Dish
+      can :create, Dish
+      can :update, Dish
+      can :destroy, Dish
+      can :read, Ingredient
+    end
+
+  
   end
 end

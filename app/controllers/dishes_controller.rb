@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-
+	before_action :authenticate_admin!, :except => [:index, :show]
 	def index
     @dishes = Dish.all
 	end

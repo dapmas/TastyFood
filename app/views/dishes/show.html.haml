@@ -32,13 +32,23 @@
           = link_to @resturants.find(resturant_id).name, @resturants.find(resturant_id)
 
 %h5
-  = link_to "Return to all Dishes.", dishes_path
-  &nbsp;
-  |
-  &nbsp;
-  = link_to "Edit this Dish", edit_dish_path
-  &nbsp;
-  |
-  &nbsp;
-  /= link_to "Delete this Dish", @dish, :confirm => "This dish will be deleted!", :method => :delete
-  = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+  - if admin_signed_in?
+    = link_to "Return to all Dishes.", dishes_path
+    - if @dish.admin == current_admin
+      / It is assumed that a user has only one role out of admin, resturant_owner and normal user.
+      - if current_admin.has_role? :resturant_owner
+        &nbsp;
+        |
+        &nbsp;
+        = link_to "Edit this Dish", edit_dish_path
+        &nbsp;
+        |
+        &nbsp;
+        = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+    - if current_admin.has_role? :super_admin
+      &nbsp;
+      |
+      &nbsp;
+      = link_to 'Delete this Dish', @dish, :method => :delete, data: { confirm: 'Are you sure?' }
+  - else
+    = link_to "Return to all Dishes.", dishes_path
