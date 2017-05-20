@@ -3,6 +3,11 @@
 
 %small
   = @dish.created_at.strftime("%b %d, %Y")
+  &nbsp;
+  |
+  &nbsp;
+  Created By :
+  = @dish.admin.email
 
 
 %p

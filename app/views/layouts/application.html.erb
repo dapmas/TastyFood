@@ -11,7 +11,38 @@
   <body>
     <div>
       <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
+<table>
+  <tr>
+    <th>
+      <%= link_to "Sign Up Admin", new_admin_registration_path %>
+
+      <% if admin_signed_in? %>
+        <%= link_to('Logout Admin', destroy_admin_session_path, :method => :delete) %>
+
+      <% else %>
+        <%= link_to('Login Admin', new_admin_session_path)  %>
+
+      <% end %>
+    </th>
+    <th>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </th>
+    <th>
+      <%= link_to "Sign Up User", new_user_registration_path %>
+
+      <% if user_signed_in? %>
+        <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
+
+      <% else %>
+        <%= link_to('Login User', new_user_session_path)  %>
+
+      <% end %>
+    </th>
+  </tr>
+</table>
 
     <%= yield %>
   </body>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520065357) do
+ActiveRecord::Schema.define(version: 20170520072545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,17 @@ ActiveRecord::Schema.define(version: 20170520065357) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "admins_roles", id: false, force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "role_id"
+    t.index ["admin_id", "role_id"], name: "index_admins_roles_on_admin_id_and_role_id", using: :btree
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "body"
-    t.integer  "user_id"
-    t.integer  "owner_id"
     t.integer  "admin_id"
   end
 
@@ -83,7 +87,16 @@ ActiveRecord::Schema.define(version: 20170520065357) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "resource_type"
+    t.integer  "resource_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
