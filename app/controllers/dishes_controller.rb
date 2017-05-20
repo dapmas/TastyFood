@@ -26,7 +26,8 @@ class DishesController < ApplicationController
 
 	def edit
 		@dish = Dish.find(params[:id])
-		@resturant = Resturant.where(:email => @dish.admin.email)
+		resturant_array = Resturant.where(:email => @dish.admin.email).to_a
+		@resturant = resturant_array[0]
 		@ingredients = @resturant.ingredients
 	end
 
