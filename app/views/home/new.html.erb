@@ -1,0 +1,11 @@
+<%= form_tag("/home/index", method: "post") do %>
+  <%= label_tag :dish %><br>
+  <%= text_field_tag :dish %>
+  <br>
+  <br>
+  <%= label_tag :ingredient %><br>
+  <%= text_field_tag :ingredient %>
+  <p>
+    <%= submit_tag("Submit") %>
+  </p>
+<% end %>

@@ -1,0 +1,38 @@
+%h1
+  Welcome to TomatoMint
+
+%p
+  %h4
+    = link_to "All Resturants", resturants_path
+
+    = link_to "All Dishes", dishes_path
+
+    = link_to "All Ingredients", ingredients_path
+
+
+
+%h4 List of Resturants
+
+
+
+- if @resturants.present?
+  - @resturants.each do |resturant|
+    %h4
+      = link_to resturant.name, resturant
+    %br
+- else
+  %h4 Sorry! No resturants for this ingredient.
+
+
+%br
+
+
+
+%br
+- if @res.present?
+  - @res.each do |rest|
+    %h4
+      = link_to rest.name, rest
+    %br
+- else
+  %h4 Sorry! No resturant for this dish.

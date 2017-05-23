@@ -1,10 +1,19 @@
-%h1 This is the Home page.
+%h1
+  Welcome to TomatoMint
 
 %p
   %h4
-    = link_to "Resturants", resturants_path
-  %h4
-    = link_to "Dishes", dishes_path
-  %h4
-    = link_to "Ingredients", ingredients_path
-  
+    = link_to "All Resturants", resturants_path
+
+    = link_to "All Dishes", dishes_path
+
+    = link_to "All Ingredients", ingredients_path
+
+
+
+%h4
+  = form_tag("/home/show", method: "get") do
+    = select_tag "ingredient", options_for_select(Ingredient.all.collect {|p| [ p.name, p.id ] }),{ include_blank: true }
+    /= select("ingredient", "ingredient_id", Ingredient.all.collect {|p| [ p.name, p.id ] }, { include_blank: true })
+    = select_tag "dish", options_for_select(Dish.all.collect {|p| [ p.title, p.id ] }),{ include_blank: true }
+    = submit_tag("Search")

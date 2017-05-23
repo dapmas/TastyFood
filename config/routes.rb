@@ -12,6 +12,7 @@ devise_scope :user do
   end
 end
   get 'home/index'
+  get 'home/show'
 
   resources :resturants
   resources :dishes
