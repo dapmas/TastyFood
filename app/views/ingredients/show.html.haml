@@ -6,7 +6,7 @@
   &nbsp;
   Description of the Ingredient.
 
-%h4
+%h5
   - if admin_signed_in?
     = link_to "Return to all Ingredients.", ingredients_path
     - if current_admin.has_role? :super_admin

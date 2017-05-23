@@ -1,7 +1,7 @@
 %h1
   = @dish.title
 
-%small
+%h6
   = @dish.created_at.strftime("%b %d, %Y")
   &nbsp;
   |
@@ -16,10 +16,8 @@
 %h4 Ingredients :
 
 - @dish.ingredient_ids.each do |ingredient_id|
-  %ul
-    %h4
-      %li
-        =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
+  %h4
+    =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
 
 %h5
   - if admin_signed_in?

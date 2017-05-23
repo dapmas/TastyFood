@@ -1,10 +1,9 @@
 %h1 List of all the ingredients
 
 - @ingredients.each do |ingredient|
-  %ul
-    %li
-      = link_to ingredient.name, ingredient
-%h4
+  %h4
+    = link_to ingredient.name, ingredient
+%h5
   - if admin_signed_in?
     - if current_admin.has_role? :super_admin
       = link_to "Add new Ingredient", new_ingredient_path

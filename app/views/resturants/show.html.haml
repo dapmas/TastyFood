@@ -5,16 +5,16 @@
 
 - if @resturant.ingredient_ids.present?
   - @resturant.ingredient_ids.each do |ingredient_id|
-    %ul
-      %h4
-        %li
-          =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
+
+    %h4
+
+      =link_to @ingredients.find(ingredient_id).name, @ingredients.find(ingredient_id)
 
 - else
   %p Sorry! There are no ingredients available for this resturant right now.
 
 
-%h4
+%h5
   - if admin_signed_in?
     = link_to "Return to all Resturants.", resturants_path
     - if @resturant.email == current_admin.email

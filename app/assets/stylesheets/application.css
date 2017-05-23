@@ -315,5 +315,19 @@
    padding-right: 15px;
  }
  h5{
-   text-align: center;
+   text-align: left;
+   position: relative;
  }
+ p{
+   text-align: center;
+   position: relative;
+ }
+ small{
+   text-align: center;
+   position: relative;
+ }
+ h6{
+   text-align: center;
+   position: relative;
+   padding-right: 15px;
+}

@@ -5,7 +5,7 @@
     = link_to resturant.name, resturant_path(:id => resturant.id)
 
 
-%h4
+%h5
   - if admin_signed_in?
     - if current_admin.has_role? :super_admin
       = link_to "Add new Resturant", new_resturant_path

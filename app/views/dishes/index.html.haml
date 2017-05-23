@@ -3,11 +3,9 @@
 - @dishes.each do |dish|
   %h4
     = link_to dish.title, dish
-  %p
-    = dish.body
 
 
-%h4
+%h5
   - if admin_signed_in?
     - if current_admin.has_role? :resturant_owner
       = link_to "Add new Dish", new_dish_path
