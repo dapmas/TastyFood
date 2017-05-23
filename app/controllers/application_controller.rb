@@ -18,4 +18,6 @@ class ApplicationController < ActionController::Base
     @dishes = Dish.all
   end
 
+
+
 end

@@ -4,8 +4,15 @@
     <title>TastyFood</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
   </head>
 
   <body>
@@ -17,27 +24,23 @@
 <table>
   <tr>
     <th>
-      <%= link_to "Sign Up Admin", new_admin_registration_path %>
+    <!--  <%= link_to "Sign Up Admin", new_admin_registration_path %> -->
 
       <% if admin_signed_in? %>
         <%= link_to('Logout Admin', destroy_admin_session_path, :method => :delete) %>
 
-      <% else %>
-        <%= link_to('Login Admin', new_admin_session_path)  %>
-
       <% end %>
     </th>
-    <th>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </th>
-    <th>
-      <%= link_to "Sign Up User", new_user_registration_path %>
 
+    <th>
+      <% if not admin_signed_in? and  not user_signed_in? %>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
       <% if user_signed_in? %>
-        <%= link_to('Logout User', destroy_user_session_path, :method => :delete) %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 
       <% else %>
-        <%= link_to('Login User', new_user_session_path)  %>
+        <%= link_to('Login', new_user_session_path)  %>
 
       <% end %>
     </th>

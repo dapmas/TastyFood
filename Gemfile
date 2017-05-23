@@ -73,3 +73,5 @@ gem 'ransack'
 
 gem 'cancancan'
 gem 'rolify'
+
+gem 'simple_form'
